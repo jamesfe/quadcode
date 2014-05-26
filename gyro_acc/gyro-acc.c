@@ -16,7 +16,8 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <string.h>
-#include <time.h>
+#include "sys/time.h" // new
+//#include <time.h>
 #include "L3G.h"
 #include "LSM303.h"
 #include "sensor.c"
@@ -55,9 +56,8 @@ int timeval_subtract(struct timeval *result, struct timeval *t2, struct timeval 
     return (diff<0);
 }
 
-int main(int argc, char *argv[])
+int printSensorData()
 {
-
 	float rate_gyr_y = 0.0;   // [deg/s]
 	float rate_gyr_x = 0.0;   // [deg/s]
 	float rate_gyr_z = 0.0;   // [deg/s]
@@ -158,5 +158,6 @@ int main(int argc, char *argv[])
 
 	    printf("Loop Time %d\t", mymillis()- startInt);
     }
+    return(0);
 }
 
