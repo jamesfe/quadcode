@@ -3,7 +3,7 @@
     Created by jamesfe
     CHANGELOG
         26MAY2014 - Created
-
+        30MAY2014 - More modifications, framework
 */
 #ifdef __cplusplus
 extern "C"{
@@ -16,16 +16,31 @@ extern "C"{
 #endif
 
 #include<stdio.h>
+#include <array>
+
+using namespace std;
+
 
 class sensorData {
+    /*
+        sensorData is an object that we can pass between the portions
+        of the quadcode in order to package the three angles
+        and allow various access to them. 
+    */
     private:
-        float axisAngles[3];
+        array<float,3> axisAngles;
     public:
-        float* getAxisAngles();
+        sensorData(array<float,3> &inAxisAngles);       // done
+        array<float,3> getAxisAngles();     // done
 };
 
-float* sensorData::getAxisAngles() {
-    return(&axisAngles);
+array<float,3> sensorData::getAxisAngles() {
+    return(axisAngles);
+}
+
+sensorData::sensorData(array<float,3> &inAxisAngles) {
+    // Initialize data to k
+    axisAngles = inAxisAngles;
 }
 
 class sensorHandler {
@@ -34,22 +49,23 @@ class sensorHandler {
         sensorData currData;
         int needData;        
 
-        sensorHandler();
         int checkDataTime();
         
 
     public:
-        sensorData getSensorData();
+        //sensorHandler();
+        //sensorData getSensorData();
 };
-
-void sensorHandler::sensorHandler() {
+/*
+sensorHandler::sensorHandler() {
     lastUpdate = mymillis();
     needData = 0;
 }
-
+*/
 int sensorHandler::checkDataTime() {
-    if(mymillis()-lastUpdate > 20):
+    if(mymillis()-lastUpdate > 20) {
         needData = 1;
+    }
 }
 // TODO: FINISH THESE CLASSES
 

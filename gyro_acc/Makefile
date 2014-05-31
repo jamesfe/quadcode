@@ -5,4 +5,4 @@ testmod:
 	gcc -l rt gyro-acc.c -lm
 
 test:
-	g++ -o main test.cpp 
+	g++ -o main -std=c++11 test.cpp 

@@ -24,9 +24,9 @@ void selectDevice(int file, int addr)
 
 
         if (ioctl(file, I2C_SLAVE, addr) < 0) {
-                fprintf(stderr,
+/*                fprintf(stderr,
                         "Error: Could not select device  0x%02x: %s\n",
-                        device, strerror(errno));
+                        device, strerror(errno)); */
         }
 }
 
