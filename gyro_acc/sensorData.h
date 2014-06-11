@@ -2,6 +2,10 @@
 
     Sensor Data class - holds an array of three.
     Created by jamesfe
+    MOD LOG:
+        10JUN2014 - Created
+
+
 */
 
 #include<array>
@@ -18,6 +22,7 @@ class sensorData {
         array<float,3> axisAngles;
     public:
         sensorData(array<float,3> &inAxisAngles);       // done
+        sensorData();
         array<float,3> getAxisAngles();     // done
 };
 
@@ -28,4 +33,9 @@ array<float,3> sensorData::getAxisAngles() {
 sensorData::sensorData(array<float,3> &inAxisAngles) {
     // Initialize data to k
     axisAngles = inAxisAngles;
+}
+
+sensorData::sensorData() {
+    // initialize to null
+    axisAngles = {0.0, 0.0, 0.0};
 }
