@@ -5,7 +5,7 @@
 * Created 28th April 2013
     modified by jamesfe
     26may2014 - code formatting/function modding 
-
+    20JUN2014 - commenting out loop code to 'functionalize'
 */
 
 #include <unistd.h>
@@ -56,7 +56,7 @@ int timeval_subtract(struct timeval *result, struct timeval *t2, struct timeval 
     return (diff<0);
 }
 
-int printSensorData()
+void printSensorData(float *ret)
 {
 	float rate_gyr_y = 0.0;   // [deg/s]
 	float rate_gyr_x = 0.0;   // [deg/s]
@@ -84,7 +84,7 @@ int printSensorData()
     float CFangleZ = 0.0; // new
 
 	int startInt  = mymillis();
-	struct  timeval tvBegin, tvEnd,tvDiff;
+    // 	struct  timeval tvBegin, tvEnd,tvDiff;
 
 	signed int acc_y = 0;
 	signed int acc_x = 0;
@@ -93,13 +93,11 @@ int printSensorData()
 	signed int gyr_y = 0;
 	signed int gyr_z = 0;
 
+    // We do not want to ignore interrupts
+    //signal(SIGINT, INThandler);
+	//enableIMU();
+	//gettimeofday(&tvBegin, NULL);
 
-    signal(SIGINT, INThandler);
-	enableIMU();
-	gettimeofday(&tvBegin, NULL);
-
-	while(1)
-	{
 	    startInt = mymillis();
 
         //read ACC and GYR data
@@ -120,7 +118,6 @@ int printSensorData()
         //Convert Accelerometer values to degrees
         AccXangle = (float) (atan2(*(acc_raw+1),*(acc_raw+2))+M_PI)*RAD_TO_DEG;
         AccYangle = (float) (atan2(*(acc_raw+2),*acc_raw)+M_PI)*RAD_TO_DEG;
-       
         // new code: Z:
         AccZangle = (float) (atan2(*acc_raw, *(acc_raw+1))+M_PI)*RAD_TO_DEG;
  
@@ -148,8 +145,8 @@ int printSensorData()
 
         //printf ("   GyroX  %7.3f  AccXangle \e[m %7.3f  \033[22;31mCFangleX %7.3f\033[0m GyroY  %7.3f  AccYangle %7.3f  \033[22;36mCFangleY %7.3f\033[0m GyZ %7.3f AccZ \e[m %7.3f CFZ %7.3f \n",gyroXangle,AccXangle,CFangleX,gyroYangle,AccYangle,CFangleY, gyroZangle, AccZangle, CFangleZ);
 
-        printf(" CFX: %7.3f CFY: %7.3f CFZ: %7.3f \n", CFangleX, CFangleY, CFangleZ);
-
+        //printf(" CFX: %7.3f CFY: %7.3f CFZ: %7.3f \n", CFangleX, CFangleY, CFangleZ);
+       /* 
         //Each loop should be at least 20ms.
         while(mymillis() - startInt < 20)
         {
@@ -157,7 +154,10 @@ int printSensorData()
         }
 
 	    printf("Loop Time %d\t", mymillis()- startInt);
-    }
-    return(0);
+        */
+    float retVals[3] = {CFangleX, CFangleY, CFangleZ};
+    ret = retVals;
+    //TODO: TEST THIS
+//    return(0);
 }
 

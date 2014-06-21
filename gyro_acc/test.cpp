@@ -24,6 +24,8 @@ extern "C"{
 using namespace std;
 
 int main() {
-    printSensorData();
+    enableIMU();
+    float inFloats[3];
+    printSensorData(inFloats);
     return(0);
 }
