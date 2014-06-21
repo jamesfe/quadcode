@@ -23,9 +23,6 @@ extern "C"{
 
 using namespace std;
 
-// TODO: FINISH THESE CLASSES
-
-
 int main() {
     printSensorData();
     return(0);
