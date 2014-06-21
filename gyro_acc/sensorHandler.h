@@ -42,16 +42,20 @@ sensorHandler::sensorHandler() {
 }
 
 int sensorHandler::checkDataTime() {
-    
+    // see if we need to update the sensor's data
     if(mymillis()-lastUpdate > updateBoundary) {
         needData = 1;
     }
 }
 
 void sensorHandler::updateSensorData() {
-    float inFloats[3];
-    readSensorData(inFloats);
-    currData.update(inFloats);
-    lastUpdate = mymillis();
-    needData = 0;
+    // Read data from the sensor (if necessary)
+    checkDataTime();
+    if(needData==1) {
+        float inFloats[3];
+        readSensorData(inFloats);
+        currData.update(inFloats);
+        lastUpdate = mymillis();
+        needData = 0;
+    }
 }
