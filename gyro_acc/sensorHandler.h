@@ -30,13 +30,12 @@ class sensorHandler {
 };
 
 sensorHandler::sensorHandler() {
-    lastUpdate = mymillis();
-    needData = 0;
     enableIMU();
     float inFloats[3];
     printSensorData(inFloats);
- 
-
+    currData.update(inFloats); 
+    lastUpdate = mymillis();    
+    needData = 0;
 }
 
 int sensorHandler::checkDataTime() {

@@ -42,6 +42,7 @@ sensorData::sensorData() {
 }
 
 void sensorData::update(float *inFloat) {
-    float r[3] = inFloat;
-    axisAngles = r;
+    axisAngles[0] = inFloat[0];
+    axisAngles[1] = inFloat[1];
+    axisAngles[2] = inFloat[2];
 }
