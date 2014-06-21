@@ -7,6 +7,15 @@
     
 */
 
+#ifdef __cplusplus
+extern "C"{
+#endif 
+
+#include "gyro-acc.c"
+
+#ifdef __cplusplus
+}
+#endif
 
 class sensorHandler {
     private:
@@ -23,6 +32,11 @@ class sensorHandler {
 sensorHandler::sensorHandler() {
     lastUpdate = mymillis();
     needData = 0;
+    enableIMU();
+    float inFloats[3];
+    printSensorData(inFloats);
+ 
+
 }
 
 int sensorHandler::checkDataTime() {

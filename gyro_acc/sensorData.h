@@ -21,9 +21,10 @@ class sensorData {
     private:
         array<float,3> axisAngles;
     public:
-        sensorData(array<float,3> &inAxisAngles);       // done
-        sensorData();
-        array<float,3> getAxisAngles();     // done
+        sensorData(array<float,3> &inAxisAngles);   // done
+        sensorData();                               //done
+        array<float,3> getAxisAngles();             // done
+        void update(float *inFloat);
 };
 
 array<float,3> sensorData::getAxisAngles() {
@@ -38,4 +39,9 @@ sensorData::sensorData(array<float,3> &inAxisAngles) {
 sensorData::sensorData() {
     // initialize to null
     axisAngles = {0.0, 0.0, 0.0};
+}
+
+void sensorData::update(float *inFloat) {
+    float r[3] = inFloat;
+    axisAngles = r;
 }
