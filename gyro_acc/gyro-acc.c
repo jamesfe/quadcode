@@ -56,7 +56,7 @@ int timeval_subtract(struct timeval *result, struct timeval *t2, struct timeval 
     return (diff<0);
 }
 
-void printSensorData(float *ret)
+void readSensorData(float *ret)
 {
 	float rate_gyr_y = 0.0;   // [deg/s]
 	float rate_gyr_x = 0.0;   // [deg/s]
