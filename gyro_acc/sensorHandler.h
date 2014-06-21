@@ -21,8 +21,9 @@ class sensorHandler {
     private:
         float lastUpdate;
         sensorData currData;
-        int needData;        
-
+        int needData;       
+        // How long between updates? - updateBoundary in ms 
+        int updateBoundary; 
         int checkDataTime();
     public:
         sensorHandler();
@@ -30,22 +31,25 @@ class sensorHandler {
 };
 
 sensorHandler::sensorHandler() {
+    // Initialize Everything
     enableIMU();
     float inFloats[3];
     readSensorData(inFloats);
     currData.update(inFloats); 
     lastUpdate = mymillis();    
     needData = 0;
+    updateBoundary = 20;
 }
 
 int sensorHandler::checkDataTime() {
-    if(mymillis()-lastUpdate > 20) {
+    
+    if(mymillis()-lastUpdate > updateBoundary) {
         needData = 1;
     }
 }
 
 void sensorHandler::updateSensorData() {
-    void inFloats[3];
+    float inFloats[3];
     readSensorData(inFloats);
     currData.update(inFloats);
     lastUpdate = mymillis();
