@@ -3,7 +3,7 @@
 // CHANGELOG
 //      26MAY2014 - Created
 
-#include "mainctl.h"
+#include "mainCtl.hpp"
 
 float engine::engine(int inLEDMode) {
     /* 
