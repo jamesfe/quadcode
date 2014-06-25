@@ -11,8 +11,8 @@
 
 #include<stdio.h>
 #include <array>
-#include "sensorData.h"
-#include "sensorHandler.h"
+#include "sensorData.hpp"
+#include "sensorHandler.hpp"
 
 using namespace std;
 
