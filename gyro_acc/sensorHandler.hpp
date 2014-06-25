@@ -17,6 +17,8 @@ extern "C"{
 }
 #endif
 
+#include "sensorData.hpp"
+
 class sensorHandler {
     private:
         float lastUpdate;

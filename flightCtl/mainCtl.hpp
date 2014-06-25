@@ -10,6 +10,7 @@
 */
 
 #include "../PIGPIO/pigpio.h"
+#include "../gyro_acc/sensorHandler.hpp"
 
 class selfData {
     
