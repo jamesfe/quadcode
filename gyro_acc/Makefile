@@ -6,3 +6,4 @@ testmod:
 
 test:
 	g++ -o main -std=c++11 -L./ test.cpp 
+	rm main
