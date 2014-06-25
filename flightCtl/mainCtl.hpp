@@ -1,12 +1,49 @@
-// Loose framework for quadcopter
-// created by jamesfe
-// 26MAY2014 - Created
+/*
 
+    Loose framework for quadcopter
+    created by jamesfe
+    CHANGELOG
+        26MAY2014 - Created
+        23JUN2014 - Refactor, Rearrange, Rename
+
+
+*/
+
+#include "../PIGPIO/pigpio.h"
+
+class selfData {
+    
+};
+
+class qEngine {
+    private:
+        float currPower;
+        int ledMode;
+
+    public:
+
+        qEngine(int inLEDMode);
+        float incPower(float intensity);
+        float decPower(float intensity);
+        float stop();
+        float getPower();
+        void updateLEDMode(int newMode);
+};
+
+class qEngineSet {
+    private:
+        qEngine quadEngines[4];
+     
+    public:
+        float stabilize(selfData inSensorData);
+        float* getEngineVals();
+        void updateLEDMode(int newMode); 
+};
 
 class quadrotor {
 
     private:
-        engineSet engines;
+        qEngineSet qEngines;
         // some sensor set
 
     public:  
@@ -16,31 +53,3 @@ class quadrotor {
 
 };
 
-class engine {
-    private:
-        float currPower;
-        int ledMode;
-
-    public:
-
-        engine(int inLEDMode);
-        float incPower(float intensity);
-        float decPower(float intensity);
-        float stop();
-        float getPower();
-        void updateLEDMode(int newMode);
-};
-
-class engineSet {
-    private:
-        engine quadEngines[4];
-     
-    public:
-        float stabilize(selfData inSensorData);
-        float* getEngineVals();
-        void updateLEDMode(int newMode); 
-};
-
-class selfData {
-    
-};

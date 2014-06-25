@@ -1,11 +1,17 @@
-// Some wrapper functions for the flight framework
-// created by jamesfe
-// CHANGELOG
-//      26MAY2014 - Created
+/*
+
+    Some wrapper functions for the flight framework
+    created by jamesfe
+
+    CHANGELOG
+        26MAY2014 - Created
+        23JUN2014 - Additional refactor & rename
+
+*/
 
 #include "mainCtl.hpp"
 
-float engine::engine(int inLEDMode) {
+float qEngine::qEngine(int inLEDMode) {
     /* 
         Constructor for an enigne.  ledMode is for debugging.
         ledMode can be {0, 1} - 1 for debugging, 0 for ESC
@@ -14,23 +20,23 @@ float engine::engine(int inLEDMode) {
     
 }
 
-float engine::incPower(float intensity) {
+float qEngine::incPower(float intensity) {
     /* 
-        Increase power to engine by intensity.
+        Increase power to qEngine by intensity.
         (TODO: unsure what intensity will be)
     */
     return(-1.0);
 }
 
-float engine::decPower(float intensity) {
+float qEngine::decPower(float intensity) {
     /* 
-        Decrease power to engine by intensity.
+        Decrease power to qEngine by intensity.
         (TODO: unsure what intensity will be.)
     */
     return(-1.0);
 }
 
-float engine::stop() {
+float qEngine::stop() {
     /*
         currPower = 0;
         TODO: set this up
@@ -38,7 +44,7 @@ float engine::stop() {
     return(0.0);
 }
 
-void engineSet::updateLEDMode(int newMode) {
+void qEngineSet::updateLEDMode(int newMode) {
     for(i = 0; i < numEngines; i++) {
         //quadEngines[i].updateLEDMode(newMode);
     }
