@@ -29,10 +29,17 @@ class sensorHandler {
         int checkDataTime();
     public:
         sensorHandler();
+        int initializeSensorHandler();
         void updateSensorData();
 };
 
 sensorHandler::sensorHandler() {
+    float inFloats[3] = {0.0, 0.0, 0.0};
+    //inFloats = {0.0, 0.0, 0.0};
+    currData.update(inFloats);
+}
+
+int sensorHandler::initializeSensorHandler() {
     // Initialize Everything
     enableIMU();
     float inFloats[3];
@@ -41,6 +48,7 @@ sensorHandler::sensorHandler() {
     lastUpdate = mymillis();    
     needData = 0;
     updateBoundary = 20;
+    return(0);
 }
 
 int sensorHandler::checkDataTime() {

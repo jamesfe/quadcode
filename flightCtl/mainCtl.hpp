@@ -46,9 +46,11 @@ class quadrotor {
     private:
         qEngineSet qEngines;
         // some sensor set
+        sensorHandler mySensor;
 
-    public:  
-
+    public: 
+        quadrotor(); 
+        int prepForFlight();
         void enterKeyControlLoop();
             // a function where a user controls with a laptop
 

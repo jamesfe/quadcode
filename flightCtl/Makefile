@@ -6,4 +6,4 @@ testmod:
 
 test:
 	g++ -o main -std=c++11 -L./ -L../PIGPIO/ testFlight.cpp 
-	rm main
+#	rm main
