@@ -67,5 +67,5 @@ int quadrotor::prepForFlight() {
 }
 
 quadrotor::quadrotor() {
-    
+    cout << "Hello world!";    
 }
