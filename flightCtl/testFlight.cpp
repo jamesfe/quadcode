@@ -1,14 +1,12 @@
 #include<iostream>
 
-#include "mainCtl.hpp"
+#include "quadrotor.hpp"
 
 using namespace std;
 
 int main() {
 
     int flightprep;
-
-    
     quadrotor myQuad;
 //    myQuad.prepForFlight();
 

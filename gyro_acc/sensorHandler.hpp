@@ -17,7 +17,10 @@ extern "C"{
 }
 #endif
 
+#ifndef sensorData_hpp
+#define sensorData_hpp
 #include "sensorData.hpp"
+#endif
 
 class sensorHandler {
     private:
