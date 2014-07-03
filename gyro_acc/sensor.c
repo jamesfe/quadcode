@@ -1,7 +1,12 @@
+#include <fcntl.h>
+#include <sys/stat.h>
+
 #include "i2c-dev.h"
 #include "L3G.h"
 #include "LSM303.h"
 //#include "gyro.h"
+
+
 int file;
 
 void  readBlock(uint8_t command, uint8_t size, uint8_t *data)
@@ -53,6 +58,7 @@ void readMAG(int  *m)
         *(m+1) = (int16_t)(block[5] | block[4] << 8) ;
         *(m+2) = (int16_t)(block[3] | block[2] << 8) ;
 }
+
 void readGYR(int *g)
 {
 	uint8_t block[6];

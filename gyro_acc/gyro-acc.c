@@ -20,7 +20,8 @@
 //#include <time.h>
 #include "L3G.h"
 #include "LSM303.h"
-#include "sensor.c"
+//#include "sensor.c"
+#include "sensor.h"
 #include "i2c-dev.h"
 
 #define X   0

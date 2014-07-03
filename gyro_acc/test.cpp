@@ -11,7 +11,11 @@
 
 #include<stdio.h>
 #include <array>
+
+#ifndef sensorData_hpp
+#define sensorData_hpp
 #include "sensorData.hpp"
+#endif
 #include "sensorHandler.hpp"
 
 using namespace std;
