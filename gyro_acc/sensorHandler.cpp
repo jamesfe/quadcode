@@ -47,3 +47,8 @@ void sensorHandler::updateSensorData() {
         needData = 0;
     }
 }
+
+sensorData sensorHandler::getCurrentData() {
+    updateSensorData();
+    return(currData);
+}

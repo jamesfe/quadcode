@@ -24,6 +24,11 @@ extern "C"{
 #include "sensorData.hpp"
 #endif
 
+/*
+    TODO:
+    One thing we don't have is a method to figure out if the
+    sensor is working properly.  Maybe a check for that?
+*/
 
 class sensorHandler {
     private:
@@ -37,5 +42,6 @@ class sensorHandler {
         sensorHandler();
         int initializeSensorHandler();
         void updateSensorData();
+        sensorData getCurrentData();
 };
 
