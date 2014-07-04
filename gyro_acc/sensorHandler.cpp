@@ -6,7 +6,10 @@
 
 */
 
+#ifndef sensorHandler_hpp
+#define sensorHandler_hpp
 #include "sensorHandler.hpp"
+#endif
 
 sensorHandler::sensorHandler() {
     float inFloats[3] = {0.0, 0.0, 0.0};
