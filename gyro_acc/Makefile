@@ -9,6 +9,8 @@ test:
 	gcc -c -w *.c
 	g++ -c $(CFLAGS) *.cpp
 	g++ -o main $(CFLAGS) *.o 
+	rm test.o
+	cp *.o ../flightCtl/
 #	rm main
 
 

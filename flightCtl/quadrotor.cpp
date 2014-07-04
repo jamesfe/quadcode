@@ -6,26 +6,13 @@
 */
 
 
-#include "../PIGPIO/pigpio.h"
+//#include "../PIGPIO/pigpio.h"
 
-#ifndef sensorHandler_hpp
-#define sensorHandler_hpp
-#include "../gyro_acc/sensorHandler.hpp"
-#endif
 
-#ifndef selfData_hpp
-#define selfData_hpp
-#include "selfData.hpp"
-#endif
-
-#ifndef qEngineSet_hpp
-#define qEngineSet_hpp
-#include "qEngineSet.hpp"
-#endif
-
+#ifndef quadrotor_hpp
+#define quadrotor_hpp
 #include "quadrotor.hpp"
-
-
+#endif
 
 int quadrotor::prepForFlight() {
     // Prepare systems for flight; return flight readiness status
