@@ -19,18 +19,32 @@ int quadrotor::prepForFlight() {
     // -1 is a failure
     // 0 is ready
     int retVal = 0;
-    int sensorSetup;
-    sensorSetup = mySensor.initializeSensorHandler();
-    if(sensorSetup < 0) {
-        retVal = -1;
+    if(usingSensor==true) {
+        int sensorSetup;
+        sensorSetup = mySensor.initializeSensorHandler();
+        if(sensorSetup < 0) {
+            retVal = -1;
+        }
     }
 
-    // TODO: Setup engine & ESC test here
+    if(usingEngines==true) {
+        int engineSetup = -1;
+        engineSetup = qEngines.setupEngines();
+    }
 
     return(retVal);
 }
 
 quadrotor::quadrotor() {
     // Wrapper
+    usingSensor = true;
+    
+}
 
+void quadrotor::setSensor(bool sensorVal) {
+    usingSensor = sensorVal;
+}
+
+void quadrotor::setEngines(bool engineVal) {
+    usingEngines = engineVal;
 }

@@ -16,7 +16,14 @@ void qEngineSet::updateLEDMode(int newMode) {
 
 qEngineSet::qEngineSet() {
     numEngines = 4;
-    int tempNum = gpioInitialise();
-
+    
 }
 
+int qEngineSet::setupEngines() {
+    int GPIOSet = gpioInitialise();
+    if(GPIOSet==PI_INIT_FAILED) {
+        cout << "PIGPIO Initialization Failed." << endl;
+        return(-1);
+        
+    }
+}
