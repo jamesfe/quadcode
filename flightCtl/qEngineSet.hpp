@@ -22,5 +22,6 @@ class qEngineSet {
         float* getEngineVals();
         void updateLEDMode(int newMode); 
         int setupEngines();
+        int terminate();
 };
 

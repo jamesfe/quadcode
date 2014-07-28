@@ -48,3 +48,7 @@ void quadrotor::setSensor(bool sensorVal) {
 void quadrotor::setEngines(bool engineVal) {
     usingEngines = engineVal;
 }
+
+int quadrotor::postFlight() {
+    qEngines.terminate();
+}

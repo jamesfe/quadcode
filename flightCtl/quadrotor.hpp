@@ -18,6 +18,7 @@ class quadrotor {
     public: 
         quadrotor(); 
         int prepForFlight();
+        int postFlight();
 
         // a function where a user controls with a laptop
         void enterKeyControlLoop();

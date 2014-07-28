@@ -18,17 +18,12 @@ int main(int argc, char* argv[]) {
         for(int i = 0; i < argc; i++) {
             thisLower = argv[i];
             transform(thisLower.begin(), thisLower.end(), thisLower.begin(), ::tolower);
-            switch(thisLower) {
-                case "-nosensor": 
-                    sensorVal = false;
-                    break;
-                case "-noengine":
-                    engineVal = false;
-                    break;
-                case default:
-                    break;
+            if(thisLower=="-nosensor") {
+                sensorVal = false;
             }
-            
+            if(thisLower=="-noengine") {
+                engineVal = false;
+            }
         }
     }
     else {
@@ -40,7 +35,10 @@ int main(int argc, char* argv[]) {
     quadrotor myQuad;
     myQuad.setSensor(sensorVal);
     myQuad.setEngines(engineVal);
-    myQuad.prepForFlight();
+    flightprep = myQuad.prepForFlight();
+    if(flightprep>=0) {
+        cout << "Flight Prep successful!" << endl;
+    }
 
 
     return(0);

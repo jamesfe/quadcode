@@ -6,7 +6,11 @@
 
 */
 
+#include<iostream>
+
 #include "qEngineSet.hpp"
+
+using namespace std;
 
 void qEngineSet::updateLEDMode(int newMode) {
     for(int i = 0; i < this->numEngines; i++) {
@@ -24,6 +28,17 @@ int qEngineSet::setupEngines() {
     if(GPIOSet==PI_INIT_FAILED) {
         cout << "PIGPIO Initialization Failed." << endl;
         return(-1);
-        
     }
+}
+
+int qEngineSet::terminate() {
+    float qRet = 0.0;
+    for(int i = 0; i < numEngines; i++) {
+        qRet+=quadEngines[i].stop();
+    }  
+    gpioTerminate();
+    if(qRet>0) {
+        return(1);    
+    }
+    return(0);
 }
