@@ -12,7 +12,7 @@ int main() {
 
     int flightprep;
     quadrotor myQuad;
-//    myQuad.prepForFlight();
+    myQuad.prepForFlight();
 
 
     return(0);

@@ -15,9 +15,23 @@
 #include "qEngineSet.hpp"
 #endif
 
+// Added qEngine on 28JUL2014
+#ifndef qEngine_hpp
+#define qEngine_hpp
+#include "qEngine.hpp"
+#endif
+
 #ifndef selfData_hpp
 #define selfData_hpp
 #include "selfData.hpp"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "../PIGPIO/pigpio.h"
+#ifdef __cplusplus
+}
 #endif
 
 

@@ -22,8 +22,11 @@ sensorData::sensorData(array<float,3> &inAxisAngles) {
 }
 
 sensorData::sensorData() {
-    // initialize to null
-    axisAngles = {0.0, 0.0, 0.0};
+    /* initialize to null
+     * Very weird issue here - we have to double-wrap these in 
+     * double-braces for it to compile.  See stack-overflow.
+    */ 
+    axisAngles = { {0.0, 0.0, 0.0} };
 }
 
 void sensorData::update(float *inFloat) {

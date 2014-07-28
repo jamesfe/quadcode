@@ -3,14 +3,14 @@
     Created by jamesfe
 
     02JUL2014 - Created
+    28JUL2014 - Modding to add pigpiod
+
 */
 
-#include "qEngine.hpp"
-
-#ifndef selfData_hpp
-#define selfData_hpp
-#include "selfData.hpp"
-#endif
+//#include "qEngine.hpp"
+// used to include selfdata
+#define qEngineSet_hpp
+#include "includes.hpp"
 
 class qEngineSet {
     private:

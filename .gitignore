@@ -1,5 +1,8 @@
-gyro_acc/main
+# Swap files for vim
+*.swp
 
+gyro_acc/main
+flightCtl/main
 
 # Object files
 *.o

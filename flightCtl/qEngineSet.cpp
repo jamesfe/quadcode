@@ -16,5 +16,7 @@ void qEngineSet::updateLEDMode(int newMode) {
 
 qEngineSet::qEngineSet() {
     numEngines = 4;
+    int tempNum = gpioInitialise();
+
 }
 
