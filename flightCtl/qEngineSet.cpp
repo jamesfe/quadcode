@@ -20,7 +20,6 @@ void qEngineSet::updateLEDMode(int newMode) {
 
 qEngineSet::qEngineSet() {
     numEngines = 4;
-    
 }
 
 int qEngineSet::setupEngines() {
@@ -29,6 +28,9 @@ int qEngineSet::setupEngines() {
         cout << "PIGPIO Initialization Failed." << endl;
         return(-1);
     }
+    
+
+
 }
 
 int qEngineSet::terminate() {

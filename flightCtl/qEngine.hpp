@@ -19,10 +19,14 @@ class qEngine {
     private:
         float currPower;
         int ledMode;
+        int GPIONum;
 
     public:
         qEngine();
         qEngine(int inLEDMode);
+        qEngine(int newGPIONum);
+
+        int setupForFlight();
         
         float incPower(float intensity);
         float decPower(float intensity);

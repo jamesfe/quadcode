@@ -6,11 +6,15 @@
 
 */
 
+#include<iostream>
 
 #include "qEngine.hpp"
 
+using namespace std;
+
 qEngine::qEngine() {
     ledMode = 0;
+    GPIONum = -1;
 }
 
 qEngine::qEngine(int inLEDMode) {
@@ -19,7 +23,11 @@ qEngine::qEngine(int inLEDMode) {
         ledMode can be {0, 1} - 1 for debugging, 0 for ESC
     */
     ledMode = inLEDMode;
-        
+    GPIONum = -1; 
+}
+
+qEngine::qEngine(int newGPIONum) {
+    GPIONum = newGPIONum;
 }
 
 float qEngine::incPower(float intensity) {
@@ -33,16 +41,39 @@ float qEngine::incPower(float intensity) {
 float qEngine::decPower(float intensity) {
     /* 
         Decrease power to qEngine by intensity.
-        (TODO: unsure what intensity will be.)
     */
+    if(ledMode==0) {
+        gpioServo(GPIONum, currPower-intensity);
+        currPower = currPower-intensity;
+    }
     return(-1.0);
 }
 
 float qEngine::stop() {
     /*
         currPower = 0;
-        TODO: set this up
     */
+    if(ledMode==0) {
+        gpioServo(GPIONum, 1000);
+    }
     return(0.0);
 }
 
+int setupForFlight() {
+    if(ledMode==1) {
+        cout << "LED Mode is on, unable to send GPIO Messages." << endl;
+        return(-1);
+    }
+    if(GPIONum==-1) {
+        cout << "GPIO Not set." << endl;
+        return(-1);
+    }
+
+    int retVal = 0;
+    retVal = gpioServo(GPIONum, 1000);
+    if(retVal!=0) {
+        cout << "There is a problem with the engine on GPIO " << GPIONum << endl;
+    }
+    return(retVal);
+
+}
