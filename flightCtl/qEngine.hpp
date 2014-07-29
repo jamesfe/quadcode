@@ -20,11 +20,16 @@ class qEngine {
         float currPower;
         int ledMode;
         int GPIONum;
+        int engineMax;
+        int engineMin;
+
 
     public:
         qEngine();
         qEngine(int inLEDMode);
-        qEngine(int newGPIONum);
+
+        // some default parameters common to all constructors
+        void setDefaults();
 
         int setupForFlight();
         
