@@ -35,15 +35,6 @@ int quadrotor::prepForFlight() {
         engineSetup = qEngines.setupEngines();
     }
 
-    // perform spin test
-    // this is dangerous!! we need to warn the user.
-    cout << "About to perform the spin test; press enter to continue." << endl;
-    cout << "All rotors will spin for a second." << endl;
-    char k;
-    cin >> k; 
-
-
-
     return(retVal);
 }
 

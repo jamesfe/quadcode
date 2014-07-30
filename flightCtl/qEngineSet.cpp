@@ -12,14 +12,9 @@
 
 using namespace std;
 
-void qEngineSet::updateLEDMode(int newMode) {
-    for(int i = 0; i < this->numEngines; i++) {
-        //quadEngines[i].updateLEDMode(newMode);
-    }
-}
-
 qEngineSet::qEngineSet() {
     numEngines = 4;
+    spinTestMS = 2000;
 }
 
 int qEngineSet::setupEngines() {
@@ -29,8 +24,26 @@ int qEngineSet::setupEngines() {
         return(-1);
     }
     
+    // perform spin test
+    // this is dangerous!! we need to warn the user.
+    for(int i = 0; i < 4; i++) {
+        quadEngines[i].stop();
+    }
+    cout << "DANGER!!!" << endl;
+    cout << "About to perform the spin test; connect power supply and " << endl;
+    cout << "press enter to continue." << endl;
+    cout << "All rotors will spin for some time." << endl;
+    char k;
+    cin >> k; 
+    for(int i = 0; i < 4; i++) {
+        quadEngines[i].spinTest(spinTestMS);
+    }
+}
 
-
+void qEngineSet::updateLEDMode(int newMode) {
+    for(int i = 0; i < numEngines; i++) {
+        quadEngines[i].updateLEDMode(newMode);
+    }
 }
 
 int qEngineSet::terminate() {
@@ -43,4 +56,8 @@ int qEngineSet::terminate() {
         return(1);    
     }
     return(0);
+}
+
+int qEngineSet::stabilize(selfData inSensorData) {
+
 }

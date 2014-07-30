@@ -16,12 +16,15 @@ class qEngineSet {
     private:
         qEngine quadEngines[4];
         int numEngines; 
+        int spinTestMS;
     public:
         qEngineSet();
-        float stabilize(selfData inSensorData);
-        float* getEngineVals();
-        void updateLEDMode(int newMode); 
         int setupEngines();
+
+        void updateLEDMode(int newMode); 
+        int* getEngineVals();
+
+        int stabilize(selfData inSensorData);
         int terminate();
 };
 
