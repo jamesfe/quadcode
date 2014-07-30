@@ -21,10 +21,13 @@
 #include "qEngine.hpp"
 #endif
 
+/*
+// deprecated 30JUL2014
 #ifndef selfData_hpp
 #define selfData_hpp
 #include "selfData.hpp"
 #endif
+*/
 
 #ifdef __cplusplus
 extern "C" {

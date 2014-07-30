@@ -22,8 +22,8 @@ class sensorData {
         array<float,3> axisAngles;
     public:
         sensorData(array<float,3> &inAxisAngles);   // done
-        sensorData();                               //done
+        sensorData();                               // done
         array<float,3> getAxisAngles();             // done
-        void update(float *inFloat);
+        void update(float *inFloat);                // done
 };
 

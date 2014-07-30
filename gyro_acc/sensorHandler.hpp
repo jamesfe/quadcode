@@ -31,6 +31,12 @@ extern "C"{
 */
 
 class sensorHandler {
+    /*
+     * This class represents the sensor as the quadcopter controls it.  
+     * We initialize the class, then we call on it (if desired) to 
+     * access the sensor and turn it on.  We then call on it from
+     * time to time to update the sensor data it holds within it.  
+     */
     private:
         float lastUpdate;
         sensorData currData;

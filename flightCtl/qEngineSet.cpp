@@ -58,6 +58,6 @@ int qEngineSet::terminate() {
     return(0);
 }
 
-int qEngineSet::stabilize(selfData inSensorData) {
+int qEngineSet::stabilize(sensorData inSensorData) {
 
 }
