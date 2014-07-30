@@ -96,6 +96,8 @@ int qEngine::setupForFlight() {
 }
 
 void qEngine::spinTest(int sec) {
-        
+    incPower(100);
+    usleep(sleepTime);
+    decPower(100);        
 }
 
