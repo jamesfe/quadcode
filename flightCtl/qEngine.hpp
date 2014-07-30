@@ -22,7 +22,7 @@ class qEngine {
         int GPIONum;
         int engineMax;
         int engineMin;
-
+        int sleepTime;
 
     public:
         qEngine();
@@ -38,5 +38,7 @@ class qEngine {
         float stop();
         float getPower();
         void updateLEDMode(int newMode);
+        void spinTest(int sec);
+
 };
 

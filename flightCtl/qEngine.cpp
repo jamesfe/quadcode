@@ -7,6 +7,7 @@
 */
 
 #include<iostream>
+#include<unistd.h>
 
 #define qEngine_hpp
 #include "qEngine.hpp"
@@ -32,6 +33,7 @@ void qEngine::setDefaults() {
     engineMin = 1000;
     ledMode = 0;  // LEDs instead of Engines
     GPIONum = -1; // GPIO Not Set
+    sleepTime = 2000;
 }
 
 float qEngine::incPower(float intensity) {
@@ -86,6 +88,14 @@ int qEngine::setupForFlight() {
     if(retVal!=0) {
         cout << "There is a problem with the engine on GPIO " << GPIONum << endl;
     }
+
+    // wait for a few seconds while the ESC initializes 
+    usleep(sleepTime);
     return(retVal);
 
 }
+
+void qEngine::spinTest(int sec) {
+        
+}
+
