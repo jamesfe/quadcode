@@ -44,6 +44,7 @@ int qEngine::incPower(int intensity) {
         if(currPower+intensity<=engineMax) {
             gpioServo(GPIONum, currPower+intensity);
             currPower = currPower-intensity;
+            return(currPower);
         }
     }
 
@@ -58,6 +59,7 @@ int qEngine::decPower(int intensity) {
         if(currPower-intensity>=engineMin) {
             gpioServo(GPIONum, currPower-intensity);
             currPower = currPower-intensity;
+            return(currPower);
         }
     }
     return(-1.0);
@@ -68,9 +70,19 @@ int qEngine::stop() {
         currPower = 0;
     */
     if(ledMode==0) {
-        gpioServo(GPIONum, 1000);
+        gpioServo(GPIONum, engineMin);
+        currPower = engineMin;
     }
-    return(0.0);
+    return(currPower);
+}
+
+int qEngine::getPower() {
+    if(ledMode==0) {
+        return(currPower);
+    }
+    else {
+        return(-1);
+    }
 }
 
 int qEngine::setupForFlight() {
@@ -93,6 +105,15 @@ int qEngine::setupForFlight() {
     usleep(sleepTime);
     return(retVal);
 
+}
+
+void qEngine::updateLEDMode(int newMode) {
+    if(newMode==0) {
+        ledMode = 0;
+    }
+    else {
+        ledMode = 1;
+    }
 }
 
 void qEngine::spinTest(int sec) {
