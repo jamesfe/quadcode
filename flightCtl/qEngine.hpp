@@ -17,7 +17,7 @@ extern "C" {
 */
 class qEngine {
     private:
-        float currPower;
+        int currPower;
         int ledMode;
         int GPIONum;
         int engineMax;
@@ -33,10 +33,10 @@ class qEngine {
 
         int setupForFlight();
         
-        float incPower(float intensity);
-        float decPower(float intensity);
-        float stop();
-        float getPower();
+        int incPower(int intensity);
+        int decPower(int intensity);
+        int stop();
+        int getPower();
         void updateLEDMode(int newMode);
         void spinTest(int sec);
 

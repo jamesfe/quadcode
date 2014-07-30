@@ -36,7 +36,7 @@ void qEngine::setDefaults() {
     sleepTime = 2000;
 }
 
-float qEngine::incPower(float intensity) {
+int qEngine::incPower(int intensity) {
     /* 
         Increase power to qEngine by intensity.
     */
@@ -50,7 +50,7 @@ float qEngine::incPower(float intensity) {
     return(-1.0);
 }
 
-float qEngine::decPower(float intensity) {
+int qEngine::decPower(int intensity) {
     /* 
         Decrease power to qEngine by intensity.
     */
@@ -63,7 +63,7 @@ float qEngine::decPower(float intensity) {
     return(-1.0);
 }
 
-float qEngine::stop() {
+int qEngine::stop() {
     /*
         currPower = 0;
     */
@@ -96,8 +96,9 @@ int qEngine::setupForFlight() {
 }
 
 void qEngine::spinTest(int sec) {
-    incPower(100);
+    int powerDelt = 100;
+    incPower(powerDelt);
     usleep(sleepTime);
-    decPower(100);        
+    decPower(powerDelt);        
 }
 
