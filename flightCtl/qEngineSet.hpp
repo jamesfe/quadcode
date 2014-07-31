@@ -13,6 +13,15 @@
 #include "includes.hpp"
 
 class qEngineSet {
+    /*  
+        qEngineSet manages all the engines.
+        Its duties are to 
+        - Initialize the GPIO interface
+        - Allow the engines to perform their duties
+        - Manage collective engine actions (stabilization, etc.)
+        - Terminate/Manage GPIO connection when the time is right
+
+     */
     private:
         qEngine quadEngines[4];
         int numEngines; 
