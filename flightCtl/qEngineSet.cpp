@@ -59,5 +59,7 @@ int qEngineSet::terminate() {
 }
 
 int qEngineSet::stabilize(sensorData inSensorData) {
-
+    /*
+     * Stablize the quadcopter.   
+     */
 }
