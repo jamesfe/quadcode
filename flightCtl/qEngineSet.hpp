@@ -24,6 +24,7 @@ class qEngineSet {
         void updateLEDMode(int newMode); 
         int* getEngineVals();
 
+        int handleKey(char k, bool shiftMode);
         int stabilize(sensorData inSensorData);
         int terminate();
 };
