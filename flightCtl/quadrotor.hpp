@@ -12,6 +12,8 @@ class quadrotor {
     private:
         qEngineSet qEngines;
         // some sensor set
+
+        //TODO: queue sensor history
         sensorHandler mySensor;
         bool usingSensor;
         bool usingEngines;
