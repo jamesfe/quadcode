@@ -12,7 +12,7 @@
 
 using namespace std;
 
-qEngineSet::qEngineSet() {
+    qEngineSet::qEngineSet() {
     numEngines = 4;
     spinTestMS = 2000;
 }
@@ -56,6 +56,13 @@ int qEngineSet::terminate() {
         return(1);    
     }
     return(0);
+}
+
+int* qEngineSet::getEngineVals() {
+    int eVals[numEngines];
+    for(int i = 0; i < numEngines; i++) {
+        eVals[i] = quadEngines[i].getPower();
+    }    
 }
 
 int qEngineSet::stabilize(sensorData inSensorData) {
