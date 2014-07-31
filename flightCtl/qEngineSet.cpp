@@ -127,5 +127,28 @@ void qEngineSet::handleKey(char k, bool shiftMode) {
 int qEngineSet::stabilize(sensorData inSensorData) {
     /*
      * Stablize the quadcopter.   
+    this is something of an algorithmic mystery to me.  
+    what is the purpose of stabilization?  we will aim to 
+    keep the pitch and roll angles to a minimum.
+    
+    yaw, we should also try to minimize that insofar as it the 
+    quadcopter should not spin around in circles
+
+    So we hazard a guess that we need to maintain the lowest 
+    variance possible for blade energy to keep the quadcopter from 
+    constantly flying upwards.
+
+    Second, we look at the pitch/roll angles as feedback that we
+    will use to identify how proportional a response the motors
+    need to make.
+
+    Finally, we need to compare the pairs of CW and CCW rotating
+    blades to ensure that one average isn't overpowering
+    the other (i.e. the copter doesn't spin on axis in circles)
+
      */
+
+
+
+
 }
