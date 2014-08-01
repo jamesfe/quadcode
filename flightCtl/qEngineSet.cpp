@@ -7,6 +7,7 @@
 */
 
 #include<iostream>
+#include<cmath>
 
 #include "qEngineSet.hpp"
 
@@ -147,8 +148,18 @@ int qEngineSet::stabilize(sensorData inSensorData) {
     the other (i.e. the copter doesn't spin on axis in circles)
 
      */
+    array<float,3> inAngles = inSensorData.getAxisAngles();
+    float pitch = inAngles[1]; // Y
+    float roll = inAngles[0];  // X
+    float yaw = inAngles[2];   // Z
 
+    int CCW[2] = {0,3};
+    int CW[2] = {1,2};
 
-
+    float CCWPower = (quadEngines[CCW[0]].getPower()
+          + quadEngines[CCW[1]].getPower()) / 2.0;
+    float CWPower = (quadEngines[CW[0]].getPower() 
+          + quadEngines[CW[1]].getPower()) / 2.0; 
+    float vPower = abs(CCWPower - CWPower);
 
 }
