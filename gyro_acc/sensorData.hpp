@@ -17,6 +17,8 @@ class sensorData {
         sensorData is an object that we can pass between the portions
         of the quadcode in order to package the three angles
         and allow various access to them. 
+        axisAngles are ordered {X,Y,Z}
+
     */
     private:
         array<float,3> axisAngles;

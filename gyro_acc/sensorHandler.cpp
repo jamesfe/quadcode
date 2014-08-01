@@ -38,6 +38,7 @@ int sensorHandler::checkDataTime() {
 
 void sensorHandler::updateSensorData() {
     // Read data from the sensor (if necessary)
+    // sensor data comes back in form {X,Y,Z}
     checkDataTime();
     if(needData==1) {
         float inFloats[3];

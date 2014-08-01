@@ -49,5 +49,6 @@ class sensorHandler {
         int initializeSensorHandler();
         void updateSensorData();
         sensorData getCurrentData();
+        // gets data in XYZ format
 };
 
