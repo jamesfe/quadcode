@@ -24,6 +24,7 @@ class quadrotor {
 
         // a function where a user controls with a laptop
         void enterKeyControlLoop();
+        void dumpAngleDataLoop();
         
         // Below two functions modify whether or not we
         // are going to use engines or sensors

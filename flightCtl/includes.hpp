@@ -20,7 +20,12 @@
 #define qEngine_hpp
 #include "qEngine.hpp"
 #endif
-
+/*
+#ifndef kbhit_cpp
+#define kbhit_cpp
+#include "kbhit.cpp"
+#endif
+*/
 /*
 // deprecated 30JUL2014
 #ifndef selfData_hpp
