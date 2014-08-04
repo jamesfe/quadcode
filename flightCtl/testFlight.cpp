@@ -41,5 +41,6 @@ int main(int argc, char* argv[]) {
     }
 
 
+    myQuad.postFlight();
     return(0);
 }

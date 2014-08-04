@@ -8,6 +8,8 @@
 
 #include<iostream>
 #include<unistd.h>
+#include<time.h>
+
 
 #define qEngine_hpp
 #include "qEngine.hpp"
@@ -33,7 +35,11 @@ void qEngine::setDefaults() {
     engineMin = 1000;
     ledMode = 0;  // LEDs instead of Engines
     GPIONum = -1; // GPIO Not Set
-    sleepTime = 2000;
+    sleepTime = 2; // time in seconds
+}
+
+void qEngine::setGPIO(int newGPIO) {
+    GPIONum = newGPIO;
 }
 
 int qEngine::incPower(int intensity) {
@@ -56,9 +62,14 @@ int qEngine::decPower(int intensity) {
         Decrease power to qEngine by intensity.
     */
     if(ledMode==0) {
-        if(currPower-intensity>=engineMin) {
+        if((currPower-intensity>=engineMin) && (currPower-intensity < engineMax)) {
             gpioServo(GPIONum, currPower-intensity);
             currPower = currPower-intensity;
+            return(currPower);
+        }
+        else if(currPower-intensity<engineMin) {
+            gpioServo(GPIONum, engineMin);
+            currPower = engineMin;
             return(currPower);
         }
     }
@@ -96,13 +107,13 @@ int qEngine::setupForFlight() {
     }
 
     int retVal = 0;
-    retVal = gpioServo(GPIONum, 1000);
+    retVal = gpioServo(GPIONum, engineMin);
     if(retVal!=0) {
         cout << "There is a problem with the engine on GPIO " << GPIONum << endl;
     }
 
     // wait for a few seconds while the ESC initializes 
-    usleep(sleepTime);
+    //sleep(sleepTime);
     return(retVal);
 
 }
@@ -117,9 +128,12 @@ void qEngine::updateLEDMode(int newMode) {
 }
 
 void qEngine::spinTest(int sec) {
-    int powerDelt = 100;
+    int powerDelt = 500;
     incPower(powerDelt);
-    usleep(sleepTime);
-    decPower(powerDelt);        
+    cout << GPIONum << "Sleeping - " << clock() << endl; 
+    sleep(sleepTime);
+    cout << GPIONum <<  "Wake - " << clock() << endl;
+    decPower(powerDelt); 
+    stop();
 }
 

@@ -8,14 +8,21 @@
 
 #include<iostream>
 #include<cmath>
+#include<unistd.h>
 
 #include "qEngineSet.hpp"
 
 using namespace std;
 
-    qEngineSet::qEngineSet() {
+qEngineSet::qEngineSet() {
     numEngines = 4;
     spinTestMS = 2000;
+    
+    quadEngines[0].setGPIO(4);
+    quadEngines[1].setGPIO(24);
+    quadEngines[2].setGPIO(22);
+    quadEngines[3].setGPIO(23);
+
 }
 
 int qEngineSet::setupEngines() {
@@ -24,20 +31,32 @@ int qEngineSet::setupEngines() {
         cout << "PIGPIO Initialization Failed." << endl;
         return(-1);
     }
-    
-    // perform spin test
-    // this is dangerous!! we need to warn the user.
-    for(int i = 0; i < 4; i++) {
+     for(int i = 0; i < 4; i++) {
         quadEngines[i].stop();
     }
-    cout << "DANGER!!!" << endl;
-    cout << "About to perform the spin test; connect power supply and " << endl;
-    cout << "press enter to continue." << endl;
-    cout << "All rotors will spin for some time." << endl;
-    char k;
-    cin >> k; 
+    cout << "Plug in the battery, waiting until you enter a character and press enter: ";
+    char k; 
+    cin >> k;
     for(int i = 0; i < 4; i++) {
+        cout << "Setting up engines." << endl;
+        quadEngines[i].setupForFlight();
+    }    
+    // perform spin test
+    // this is dangerous!! we need to warn the user.
+   cout << "DANGER!!!" << endl;
+    cout << "All rotors will spin for some time." << endl;
+    cout << "Starting - wait" << endl;
+    sleep(4);
+    for(int i = 0; i < 4; i++) {
+        cout << "Testing engine " << i << endl;
         quadEngines[i].spinTest(spinTestMS);
+    }
+    for(int i = 0; i < 4; i++) {
+        quadEngines[i].incPower(200);    
+    }
+    sleep(3);
+    for(int i = 0; i < 4; i++) {
+        quadEngines[i].stop();
     }
 }
 

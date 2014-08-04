@@ -30,6 +30,7 @@ class qEngine {
 
         // some default parameters common to all constructors
         void setDefaults();
+        void setGPIO(int newGPIO);
 
         int setupForFlight();
         
@@ -39,6 +40,7 @@ class qEngine {
         int getPower();
         void updateLEDMode(int newMode);
         void spinTest(int sec);
+
 
 };
 
