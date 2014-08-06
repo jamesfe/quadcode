@@ -31,9 +31,7 @@ int qEngineSet::setupEngines() {
         cout << "PIGPIO Initialization Failed." << endl;
         return(-1);
     }
-     for(int i = 0; i < 4; i++) {
-        quadEngines[i].stop();
-    }
+    stopAll();
     cout << "Plug in the battery, waiting until you enter a character and press enter: ";
     char k; 
     cin >> k;
@@ -43,7 +41,7 @@ int qEngineSet::setupEngines() {
     }    
     // perform spin test
     // this is dangerous!! we need to warn the user.
-   cout << "DANGER!!!" << endl;
+    cout << "DANGER!!!" << endl;
     cout << "All rotors will spin for some time." << endl;
     cout << "Starting - wait" << endl;
     sleep(4);
@@ -55,9 +53,19 @@ int qEngineSet::setupEngines() {
         quadEngines[i].incPower(200);    
     }
     sleep(3);
-    for(int i = 0; i < 4; i++) {
-        quadEngines[i].stop();
+    stopAll();
+}
+
+int qEngineSet::stopAll() {
+    int retVal = 0;
+    for(int i = 0; i < numEngines; i++) {
+        retVal+=quadEngines[i].stop();
     }
+    if(retVal!=0) {
+        retVal = 1;
+        // TODO: Throw an exception? 
+    }
+    return(retVal);
 }
 
 void qEngineSet::updateLEDMode(int newMode) {

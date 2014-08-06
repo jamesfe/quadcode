@@ -30,6 +30,7 @@ class qEngineSet {
         qEngineSet();
         int setupEngines();
 
+        int stopAll();
         void updateLEDMode(int newMode); 
         int* getEngineVals();
 
